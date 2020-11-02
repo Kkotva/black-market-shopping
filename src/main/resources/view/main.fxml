@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.uhk.fim.pro2.shopping.ui.MainController">
+   <children>
+      <AnchorPane layoutX="200.0" layoutY="38.0" prefHeight="258.0" prefWidth="200.0" style="-fx-background-color: #eeeeee; -fx-border-color: #444444; -fx-border-style: solid; -fx-border-width: 2; -fx-border-radius: 4px 25px;" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="38.0">
+         <children>
+            <Pane fx:id="pnlColor" layoutX="38.0" layoutY="16.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+            <Label fx:id="lblNameAndAge" layoutX="30.0" layoutY="157.0" text="DisplayName, Age" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="196.0" text="Price:" wrapText="true" AnchorPane.leftAnchor="40.0">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrice" layoutX="72.0" layoutY="196.0" prefHeight="17.0" prefWidth="70.0" text="234.76" AnchorPane.rightAnchor="42.0">
+               <font>
+                  <Font name="Arial Italic" size="13.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="4.0" layoutY="296.0" prefHeight="29.0" prefWidth="196.0" style="-fx-border-color: #444444; -fx-border-style: solid none none none; -fx-background-color: #ffffff00;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0">
+               <children>
+                  <Button layoutX="31.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#onSkipButtonClick" text="Skip" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="5.0" />
+                  <Button layoutX="112.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="txtLog" layoutX="15.0" layoutY="318.0" prefHeight="77.0" prefWidth="484.0" />
+      <Button layoutX="518.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#onCheckCartButtonClick" prefHeight="53.0" prefWidth="60.0" text="Check cart" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

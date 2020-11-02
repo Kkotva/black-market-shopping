@@ -1,5 +1,8 @@
 package cz.uhk.fim.pro2.shopping.model;
 
+/**
+ * Modelova trida predstavujici adresu (adresa je pouzita u zakaznika)
+ */
 public class Address {
     private String street;
     private String city;

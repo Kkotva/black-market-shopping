@@ -3,13 +3,20 @@ package cz.uhk.fim.pro2.shopping.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Modelova trida predstavujici nakupni kosik
+ * - obsahuje:
+ *      - referenci na seznam deti (artiklu) vlozenych v kosiku
+ *      - metody pro praci se stavem a obsahem kosiku
+ *
+ */
 public class ShoppingCart {
-    private int cartId;
-    private List<Child> childList;
-    private double vat;
-    private double fee;
-    private double subtotal;
-    private double total;
+    private int cartId; // id kosiku
+    private List<Child> childList; // seznam vlozenych deti (artiklu)
+    private double vat; // DPH
+    private double fee; // poplatky, postovne, balne
+    private double subtotal; // mezisoucet (bez zapocteneho DPH)
+    private double total; // celkovy soucet
 
     public ShoppingCart() {
         this.childList = new ArrayList<>();
@@ -24,32 +31,63 @@ public class ShoppingCart {
         this.total = total;
     }
 
-    public void addChild() {
-
+    /**
+     * Metoda pro pridani vybraneho ditete do kosiku
+     * @param child konkretni dite
+     */
+    public void addChild(Child child) {
+        this.childList.add(child);
     }
 
+    /**
+     * Metoda pro odebrani vybraneho ditete z kosiku
+     * @param index dite na konkretnim indexu
+     */
     public void removeChild(int index) {
-
+        this.childList.remove(index);
     }
 
+    /**
+     * Metoda pro odebrani vybraneho ditete z kosiku
+     * @param child konkretni dite
+     */
     public void removeChild(Child child) {
-
+        this.childList.remove(child);
     }
 
+    /**
+     * Metoda pro vymazani celeho kosiku
+     */
     public void clearCart() {
-
+        this.childList.clear();
     }
 
+    /**
+     * Metoda pro vraceni aktualniho poctu deti v kosiku
+     * @return pocet deti v kosiku
+     */
     public int getChildCount() {
         return this.childList.size();
     }
 
+    /**
+     * Metoda pro vypocet celkove hodnoty kosiku vcetne DPH
+     * @return celkova cena kosiku vcetne DPH
+     */
     public double calculateTotal() {
-        return 0.0;
+        return this.calculateSubtotal() * (1 + vat) + fee;
     }
 
+    /**
+     * Metoda pro vypocet mezisouctu hodnoty kosiku (pouze cena deti bez DPH)
+     * @return mezisoucet kosiku
+     */
     public double calculateSubtotal() {
-        return 0.0;
+        double sum = 0.0;
+        for (Child child : this.childList) {
+            sum += child.getPrice();
+        }
+        return sum;
     }
 
     public int getCartId() {

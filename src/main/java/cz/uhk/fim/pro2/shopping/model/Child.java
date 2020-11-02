@@ -1,11 +1,17 @@
 package cz.uhk.fim.pro2.shopping.model;
 
+import java.time.Year;
+import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Modelova trida predstavujici Dite (prodavany/kupovany subjekt)
+ */
 public class Child {
     private String personalId;
-    private Date birthDate;
     private String displayName;
+    private double price;
+    private Date birthDate;
     private GenderType gender;
     private boolean virginity;
     private double weight;
@@ -18,10 +24,11 @@ public class Child {
     public Child() {
     }
 
-    public Child(String personalId, Date birthDate, String displayName, GenderType gender, boolean virginity, double weight, boolean race, String nationality, int skinTone, int eyeColor, int hairColor) {
+    public Child(String personalId, String displayName, double price, Date birthDate, GenderType gender, boolean virginity, double weight, boolean race, String nationality, int skinTone, int eyeColor, int hairColor) {
         this.personalId = personalId;
-        this.birthDate = birthDate;
         this.displayName = displayName;
+        this.price = price;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.virginity = virginity;
         this.weight = weight;
@@ -40,6 +47,22 @@ public class Child {
         this.personalId = personalId;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public Date getBirthDate() {
         return birthDate;
     }
@@ -48,12 +71,10 @@ public class Child {
         this.birthDate = birthDate;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public int getAge() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(this.birthDate);
+        return Year.now().getValue() - calendar.get(Calendar.YEAR);
     }
 
     public GenderType getGender() {
@@ -124,8 +145,9 @@ public class Child {
     public String toString() {
         return "Child{" +
                 "personalId='" + personalId + '\'' +
-                ", birthDate=" + birthDate +
                 ", displayName='" + displayName + '\'' +
+                ", price=" + price +
+                ", birthDate=" + birthDate +
                 ", gender=" + gender +
                 ", virginity=" + virginity +
                 ", weight=" + weight +
