@@ -1,5 +1,8 @@
 package cz.uhk.fim.pro2.shopping.model;
 
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
+
 import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,11 +23,12 @@ public class Child {
     private int skinTone;
     private int eyeColor;
     private int hairColor;
+    private Image avatar;
 
     public Child() {
     }
 
-    public Child(String personalId, String displayName, double price, Date birthDate, GenderType gender, boolean virginity, double weight, boolean race, String nationality, int skinTone, int eyeColor, int hairColor) {
+    public Child(String personalId, String displayName, double price, Date birthDate, GenderType gender, boolean virginity, double weight, boolean race, String nationality, int skinTone, int eyeColor, int hairColor, Image avatar) {
         this.personalId = personalId;
         this.displayName = displayName;
         this.price = price;
@@ -37,26 +41,39 @@ public class Child {
         this.skinTone = skinTone;
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
+        this.avatar = avatar;
     }
 
     public String getPersonalId() {
         return personalId;
     }
 
-    public void setPersonalId(String personalId) {
-        this.personalId = personalId;
+    public StringProperty getPersonalIdProperty() {
+        return new SimpleStringProperty(personalId);
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public void setPersonalId(String personalId) {
+        this.personalId = personalId;
     }
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public StringProperty getDisplayNameProperty() {
+        return new SimpleStringProperty(displayName);
+    }
+
     public double getPrice() {
         return price;
+    }
+
+    public DoubleProperty getPriceProperty() {
+        return new SimpleDoubleProperty(price);
     }
 
     public void setPrice(double price) {
@@ -77,8 +94,16 @@ public class Child {
         return Year.now().getValue() - calendar.get(Calendar.YEAR);
     }
 
+    public IntegerProperty getAgeProperty() {
+        return new SimpleIntegerProperty(getAge());
+    }
+
     public GenderType getGender() {
         return gender;
+    }
+
+    public ObjectProperty<GenderType> getGenderProperty() {
+        return new SimpleObjectProperty<>(gender);
     }
 
     public void setGender(GenderType gender) {
@@ -137,9 +162,19 @@ public class Child {
         return hairColor;
     }
 
+    public Image getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Image avatar) {
+        this.avatar = avatar;
+    }
+
     public void setHairColor(int hairColor) {
         this.hairColor = hairColor;
     }
+
+
 
     @Override
     public String toString() {

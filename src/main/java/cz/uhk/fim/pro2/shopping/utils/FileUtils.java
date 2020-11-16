@@ -9,7 +9,7 @@ public class FileUtils {
      * @return obrazek
      */
     public static Image loadImage(String imageName) {
-        // TODO nacteni obrazku ze souboru podle zadaneho nazvu a vraceni obrazku
+        // TODO [assignment2] nacteni obrazku ze souboru podle zadaneho nazvu a vraceni obrazku
         return null;
     }
 

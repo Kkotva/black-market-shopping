@@ -1,17 +1,18 @@
 package cz.uhk.fim.pro2.shopping.model;
 
 import cz.uhk.fim.pro2.shopping.utils.DataGenerator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Marketplace {
-    private List<Child> offerList;
+    private ObservableList<Child> offerList;
 
     public Marketplace() {
-        this.offerList = new ArrayList<>();
+        this.offerList = FXCollections.observableArrayList();
         String[] boyNames = { "Charles", "John", "Henry", "Adolf"};
         String[] girlNames = { "Jane", "Helen", "Kate", "Eva"};
         String[] nationalitaies = { "Czech", "American", "Afroamerican", "German"};
@@ -31,7 +32,8 @@ public class Marketplace {
                     nationalitaies[random.nextInt(4)],
                     0x88aef9,
                     0xaa3d98,
-                    0x55fe13
+                    0x55fe13,
+                    null
             ));
         }
 
@@ -48,7 +50,8 @@ public class Marketplace {
                     nationalitaies[random.nextInt(4)],
                     0xaa3d98,
                     0x55fe13,
-                    0x88aef9
+                    0x88aef9,
+                    null
             ));
         }
 
@@ -119,11 +122,11 @@ public class Marketplace {
         return null;
     }
 
-    public List<Child> getOfferList() {
+    public ObservableList<Child> getOfferList() {
         return offerList;
     }
 
-    public void setOfferList(List<Child> offerList) {
+    public void setOfferList(ObservableList<Child> offerList) {
         this.offerList = offerList;
     }
 }

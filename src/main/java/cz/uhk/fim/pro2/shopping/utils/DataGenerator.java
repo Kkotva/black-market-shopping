@@ -1,12 +1,12 @@
 package cz.uhk.fim.pro2.shopping.utils;
 
 import cz.uhk.fim.pro2.shopping.model.Child;
+import javafx.collections.ObservableList;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -45,6 +45,10 @@ public class DataGenerator {
      * @return dite
      */
     private Child generateChild() {
+        // TODO [assignment2] doplnit generovani ditete:
+        //  generovana data by mela davat smysl, v zakladu zohlednit pohlavi pro spravne prirazeni obrazku (boy-#.png | girl-#.png),
+        //  u vahy a ceny zohlednit nejake limity (nesmysl je u vahy mit 5kg kdyz je dite stare 12 let nebo treba 400kg apod., cena by mohla zacinat na 100,-),
+        //  cena i vaha by mela byt zohlednena i u pohlavi - muzi budou vetsinou tezsi, pokud budeme sexiste tak zeny mohou mit mensi hodnotu nez muzi apod
         return null;
     }
 
@@ -53,8 +57,8 @@ public class DataGenerator {
      * @param n pocet generovanych nabidek
      * @return seznam nabidek
      */
-    public static List<Child> generateOffers(int n) {
-        // TODO generovani poctu nabidek na zaklade vstupniho parametru - vyuziti metody generateChild()
+    public static ObservableList<Child> generateOffers(int n) {
+        // TODO [assignment2] generovani poctu nabidek na zaklade vstupniho parametru - vyuziti metody generateChild()
         return null;
     }
 }

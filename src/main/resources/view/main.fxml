@@ -3,22 +3,23 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.uhk.fim.pro2.shopping.ui.MainController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.uhk.fim.pro2.shopping.ui.MainController">
   <tabs>
     <Tab text="Market">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="14.0" layoutY="14.0" prefHeight="539.0" prefWidth="600.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                  <TableView fx:id="offerTable" layoutX="14.0" layoutY="14.0" prefHeight="539.0" prefWidth="600.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                     <columns>
-                        <TableColumn prefWidth="100.0" resizable="false" text="ID" />
-                      <TableColumn prefWidth="200.0" resizable="false" text="Jméno" />
-                      <TableColumn resizable="false" text="Věk" />
-                        <TableColumn minWidth="0.0" resizable="false" text="Pohlaví" />
-                        <TableColumn prefWidth="140.0" resizable="false" text="Cena" />
+                        <TableColumn fx:id="colId" prefWidth="100.0" resizable="false" text="ID" />
+                      <TableColumn fx:id="colName" prefWidth="200.0" resizable="false" text="Jméno" />
+                      <TableColumn fx:id="colAge" resizable="false" text="Věk" />
+                        <TableColumn fx:id="colGender" minWidth="0.0" resizable="false" text="Pohlaví" />
+                        <TableColumn fx:id="colPrice" prefWidth="140.0" resizable="false" text="Cena" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -125,7 +126,7 @@
                            </VBox.margin>
                         </Label>
                         <Separator prefWidth="200.0" />
-                        <Button mnemonicParsing="false" prefWidth="158.0" text="Přidat do košíku">
+                        <Button mnemonicParsing="false" onMouseClicked="#addToShoppingCart" prefWidth="158.0" text="Přidat do košíku">
                            <VBox.margin>
                               <Insets top="4.0" />
                            </VBox.margin>
@@ -174,19 +175,22 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Detail">
+    <Tab fx:id="tabDetail" text="Detail">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Pane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                      <children>
-                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/image/avatar/boy-1.png" />
+                           </image></ImageView>
                      </children>
                      <effect>
                         <DropShadow blurType="GAUSSIAN" color="#b9b7b7" offsetY="6.0" />
                      </effect>
                   </Pane>
-                  <Label layoutX="244.0" layoutY="14.0" text="DisplayName" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="14.0">
+                  <Label fx:id="lblDisplayName" layoutX="244.0" layoutY="14.0" text="DisplayName" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="Arial Black" size="18.0" />
                      </font>
@@ -196,25 +200,25 @@
                         <Font name="Arial" size="13.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="536.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextArea editable="false" layoutX="14.0" layoutY="246.0" prefHeight="277.0" prefWidth="769.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="270.0" />
-                  <Label layoutX="243.0" layoutY="47.0" text="(ID)" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="47.0">
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="438.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtDescription" editable="false" layoutX="14.0" layoutY="246.0" prefHeight="277.0" prefWidth="769.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="270.0" />
+                  <Label fx:id="lblPersonalId" layoutX="243.0" layoutY="47.0" text="(ID)" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="47.0">
                      <font>
                         <Font name="Arial Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="317.0" layoutY="181.0" text="36.2 kg">
+                  <Label fx:id="lblWeight" layoutX="317.0" layoutY="181.0" text="36.2 kg">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Slider blockIncrement="0.1" layoutX="271.0" layoutY="201.0" majorTickUnit="50.0" max="150.0" minorTickCount="10" showTickLabels="true" />
-                  <CheckBox alignment="CENTER" allowIndeterminate="true" contentDisplay="CENTER" layoutX="488.0" layoutY="180.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="220.0" text="ŘÍKÁ SI O RASOVÉ NARÁŽKY" wrapText="true">
+                  <Slider fx:id="sldWeight" blockIncrement="0.1" layoutX="271.0" layoutY="201.0" majorTickUnit="50.0" max="150.0" minorTickCount="10" showTickLabels="true" />
+                  <CheckBox fx:id="checkboxTrueRace" alignment="CENTER" allowIndeterminate="true" contentDisplay="CENTER" layoutX="488.0" layoutY="180.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="220.0" text="ŘÍKÁ SI O RASOVÉ NARÁŽKY" wrapText="true">
                      <font>
                         <Font name="Arial Bold" size="13.0" />
                      </font>
                   </CheckBox>
-                  <DatePicker editable="false" layoutX="244.0" layoutY="121.0" prefHeight="27.0" prefWidth="150.0" promptText="Datum narození" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="121.0" />
+                  <DatePicker fx:id="dtBirthDate" editable="false" layoutX="244.0" layoutY="121.0" prefHeight="27.0" prefWidth="150.0" promptText="Datum narození" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="121.0" />
                   <Label layoutX="244.0" layoutY="98.0" text="Datum narození:" AnchorPane.leftAnchor="244.0" AnchorPane.topAnchor="98.0">
                      <font>
                         <Font name="Arial" size="13.0" />
@@ -225,7 +229,7 @@
                         <Font name="Arial" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="283.0" layoutY="152.0" text="12">
+                  <Label fx:id="lblAge" layoutX="283.0" layoutY="152.0" text="12">
                      <font>
                         <Font name="Arial Bold Italic" size="18.0" />
                      </font>
@@ -240,7 +244,18 @@
                         <Font name="Arial Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="293.0" layoutY="72.0" text="28 299.23">
+                  <Label fx:id="lblPrice" layoutX="293.0" layoutY="72.0" text="28 299.23">
+                     <font>
+                        <Font name="Arial Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgVirginity" fitHeight="125.0" fitWidth="125.0" layoutX="583.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="241.0" layoutY="235.0" text="Národnost:" AnchorPane.leftAnchor="244.0">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNationality" layoutX="323.0" layoutY="233.0" text="Czech">
                      <font>
                         <Font name="Arial Bold Italic" size="18.0" />
                      </font>
